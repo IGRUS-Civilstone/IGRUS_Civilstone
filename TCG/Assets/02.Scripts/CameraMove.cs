@@ -32,7 +32,6 @@ public class CameraMove : MonoBehaviour
         came = GetComponent<Transform>();
         //TODO : X 각도 60으로 고정
 
-        //mousePosition = Vector3.zero; //이거 필요있음?
         scrLside = Screen.width / 200;
         scrRside = Screen.width * 199 / 200;
         scrUside = Screen.height * 199 / 200;
@@ -54,6 +53,7 @@ public class CameraMove : MonoBehaviour
         
         mousePosition = Input.mousePosition; //마우스 좌표값
 
+        /*
         //카메라 전후좌우 이동
         if(mousePosition.y >= scrDside && mousePosition.y <= scrUside)
         {
@@ -79,6 +79,7 @@ public class CameraMove : MonoBehaviour
                 came.Translate(screenUp * screenSpeed * (came.position.y / 10) * Time.deltaTime); //위로 이동
             }
         }
+        */
             
             //카메라 대각선 이동 , 벡터 크기 정규화
         if (mousePosition.x <= scrLside && mousePosition.y <= scrDside)

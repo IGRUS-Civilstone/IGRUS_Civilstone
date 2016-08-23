@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Player1 : MonoBehaviour {
 
+    public enum BuyStatus { Not, Select };
+    private BuyStatus buyStatus;
+
     public int gold;
     public int mana;
     public int cp;
@@ -10,11 +13,6 @@ public class Player1 : MonoBehaviour {
 
     public Camera camera1;      //카메라에서 마우스 방향으로 Ray를 쏘기 위한 기준 카메라
 
-    public Material selected;       //유닛 구매시 유닛을 올려놓을 자리를 표시하기 위한 materal
-    public Material normal;     //material 원본
-    public Material summonArea;
-
-    public GameObject back;     //바뀐 material을 돌려놓기 위한 gameobject
     public GameObject unitArcher;
 
     private GameObject[] summonAreaTile;
@@ -25,7 +23,14 @@ public class Player1 : MonoBehaviour {
     private int flgBuyUnits = 0;              //유닛 구매 flag
     public static bool selectCtrl = false;    //'Select Control' 버튼 표시
 
+    Ray ray;
     RaycastHit rayObj;                        //ray에 닿은 오브젝트의 정보
+
+    public Material selected;       //유닛 구매시 유닛을 올려놓을 자리를 표시하기 위한 materal
+    public Material normal;     //material 원본
+    public Material summonArea;
+    
+    public GameObject back;     //바뀐 material을 돌려놓기 위한 gameobject
 
     void Awake ()
     {
@@ -50,7 +55,7 @@ public class Player1 : MonoBehaviour {
 
             if (flgBuyUnits == 2)                                                                      //유닛배치 flag 2
             {
-                Ray ray = camera1.ScreenPointToRay(Input.mousePosition);                               //카메라에서 마우스 방향으로 ray발사
+                ray = camera1.ScreenPointToRay(Input.mousePosition);                               //카메라에서 마우스 방향으로 ray발사
 
                 foreach (GameObject a in summonAreaTile)                                                //유닛배치 가능 구역 표시
                 {

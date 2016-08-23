@@ -3,6 +3,8 @@ using System.Collections;
 
 public class playArcher : MonoBehaviour
 {
+    public GameObject player;
+
     public static int unitNum = 0;              //유닛 번호
 
     public static int attack;
@@ -23,6 +25,8 @@ public class playArcher : MonoBehaviour
 
     void Awake ()
     {
+        //transform.parent = player.transform;
+
         attack  = UnitInfo.attack[unitNum];
         hp      = UnitInfo.hp[unitNum];
         speed   = UnitInfo.speed[unitNum];
